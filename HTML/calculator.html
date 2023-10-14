@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic Calculator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5 pt-5">
+        <div class="calculator">
+            <input type="text" id="display" class="form-control mb-4" readonly>
+            <div class="row">
+                <button class="btn btn-secondary col-3" onclick="addToDisplay('7')">7</button>
+                <button class="btn btn-secondary col-3" onclick="addToDisplay('8')">8</button>
+                <button class="btn btn-secondary col-3" onclick="addToDisplay('9')">9</button>
+                <button class="btn btn-danger col-3" onclick="addToDisplay('+')">+</button>
+            </div>
+            <div class="row">
+                <button class="btn btn-secondary col-3" onclick="addToDisplay('4')">4</button>
+                <button class="btn btn-secondary col-3" onclick="addToDisplay('5')">5</button>
+                <button class="btn btn-secondary col-3" onclick="addToDisplay('6')">6</button>
+                <button class="btn btn-danger col-3" onclick="addToDisplay('-')">-</button>
+            </div>
+            <div class="row">
+                <button class="btn btn-secondary col-3" onclick="addToDisplay('1')">1</button>
+                <button class="btn btn-secondary col-3" onclick="addToDisplay('2')">2</button>
+                <button class="btn btn-secondary col-3" onclick="addToDisplay('3')">3</button>
+                <button class="btn btn-danger col-3" onclick="addToDisplay('*')">*</button>
+            </div>
+            <div class="row">
+                <button class="btn btn-secondary col-3" onclick="addToDisplay('0')">0</button>
+                <button class="btn btn-secondary col-3" onclick="addToDisplay('.')">.</button>
+                <button class="btn btn-primary col-3" onclick="calculate()">=</button>
+                <button class="btn btn-danger col-3" onclick="addToDisplay('/')">/</button>
+            </div>
+            <div class="row">
+                <button class="btn btn-secondary col-6" onclick="clearDisplay()">Clear</button>
+                <button class="btn btn-warning col-6" onclick="backspace()">C</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addToDisplay(value) {
+            document.getElementById("display").value += value;
+        }
+
+        function calculate() {
+            try {
+                const result = eval(document.getElementById("display").value);
+                document.getElementById("display").value = result;
+            } catch (error) {
+                document.getElementById("display").value = "Error";
+            }
+        }
+
+        function clearDisplay() {
+            document.getElementById("display").value = "";
+        }
+
+        function backspace() {
+            const currentValue = document.getElementById("display").value;
+            document.getElementById("display").value = currentValue.slice(0, -1);
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

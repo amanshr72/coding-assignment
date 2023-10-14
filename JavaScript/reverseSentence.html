@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Reverse Words</title>
+</head>
+<body>
+    <div class="container mt-4 pt-4 text-center">
+        <div class="text-left">
+            <h1>Reverse Words in a Sentence</h1>
+            <p>Enter a sentence below:</p>
+            <textarea id="inputSentence" class="form-control" rows="4" cols="50"></textarea>
+            <br>
+            <button onclick="reverseAndDisplay()" class="btn btn-success">Reverse</button>
+            <p class="mt-2"><strong>Reversed Sentence:</strong></p>
+            <p id="outputSentence"></p>
+        </div>
+    </div>
+
+    <script>
+        function reverseWords(sentence) {
+            const words = sentence.split(' ');
+            const reversedWords = words.map(word => reverseWord(word));
+            return reversedWords.join(' ');
+        }
+
+        function reverseWord(word) {
+            return word.split('').reverse().join('');
+        }
+
+        function reverseAndDisplay() {
+            const inputSentence = document.getElementById('inputSentence').value;
+            const outputSentence = document.getElementById('outputSentence');
+            
+            if (inputSentence) {
+                const reversedSentence = reverseWords(inputSentence);
+                outputSentence.textContent = reversedSentence;
+            } else {
+                outputSentence.textContent = "No input provided.";
+            }
+        }
+    </script>
+</body>
+</html>
